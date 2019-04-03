@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ProjektGrafy.Class;
+using ProjektGrafy.Pages;
 
 namespace ProjektGrafy.Controls
 {
@@ -32,8 +33,19 @@ namespace ProjektGrafy.Controls
 
         private void VertexButton_Click(object sender, RoutedEventArgs e)
         {
-            
-           // Application.Current.MainWindow
+
+            MainWindow main = Application.Current.MainWindow as MainWindow;
+            if (main.Main.Content is NewGraphPage)
+            {
+                NewGraphPage page = main.Main.Content as NewGraphPage;
+                page.SetSelectedVertex(vertex);
+                page.UpdateConnectionsTable();
+            }
+        }
+
+        public Vertex ReturnVertex()
+        {
+            return vertex;
         }
     }
 }

@@ -29,5 +29,10 @@ namespace ProjektGrafy.Class
         {
             return AllVertecs.Last<Vertex>();
         }
+
+        public bool ContainsOf(Vertex vertex)
+        {
+            return AllVertecs.Contains(vertex);
+        }
     }
 }

@@ -8,16 +8,16 @@ namespace ProjektGrafy.Class
 {
     public class Vertex
     {
-        public int idNumber;
-        public List<int> connectedWith;
+        public int idNumber { get; set; }
+        public List<Vertex> connectedWith;
         
         public Vertex(int id)
         {
             idNumber = id;
-            connectedWith = new List<int>();
+            connectedWith = new List<Vertex>();
         }
 
-        public void AddConnection(int id)
+        public void AddConnection(Vertex id)
         {
             if (connectedWith == null || !connectedWith.Contains(id))
             {
@@ -25,19 +25,24 @@ namespace ProjektGrafy.Class
             }
         }
 
-        public override bool Equals(object obj)
-        {
+        //public override bool Equals(object obj)
+        //{
 
-            Vertex toEqual = obj as Vertex;
-            if (idNumber == toEqual.idNumber)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        //    Vertex toEqual = obj as Vertex;
+        //    if (idNumber == toEqual.idNumber)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
+
+        //public override int GetHashCode()
+        //{
+        //    return base.GetHashCode();
+        //}
 
 
     }

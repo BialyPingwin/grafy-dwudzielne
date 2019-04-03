@@ -12,7 +12,7 @@
             Background="White" 
             Width="55" 
             CornerRadius="100">
-            <Button x:Name="VertexButton" Content="" BorderBrush="{x:Null}" Click="VertexButton_Click" FontSize="20" Background="{x:Null}"/>
+            <Button x:Name="VertexButton" Content="" BorderBrush="{x:Null}" Click="VertexButton_Click" FontSize="20" Background="White" Margin="10"/>
         </Border>
     </Grid>
 </UserControl>

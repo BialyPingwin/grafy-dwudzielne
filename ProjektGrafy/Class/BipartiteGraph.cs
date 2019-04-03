@@ -12,6 +12,7 @@ namespace ProjektGrafy.Class
         Graph Right;
         protected int nextID = 0;
 
+
         public BipartiteGraph()
         {
             Left = new Graph();
@@ -38,6 +39,23 @@ namespace ProjektGrafy.Class
         public Vertex ReturnLastRight()
         {
             return Right.ReturnLast();
+        }
+
+        public string LeftOrRight(Vertex vertex)
+        {
+            if (Left.ContainsOf(vertex))
+            {
+                return "Left";
+            }
+            else if (Right.ContainsOf(vertex))
+            {
+                return "Right";
+            }
+            else
+            {
+                return "null";
+            }
+
         }
     }
 }
