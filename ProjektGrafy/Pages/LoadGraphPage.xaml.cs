@@ -34,8 +34,11 @@ namespace ProjektGrafy.Pages
         public LoadGraphPage()
         {
             InitializeComponent();
+            isGraphLoaded = false;
+
             SizeChanged += DrawOnSizeChange;
             OnGraphLoaded += OnLoad;
+            
         }
 
         
@@ -173,9 +176,10 @@ namespace ProjektGrafy.Pages
         {
             if (graph == null)
             {
-                
+
+                LoadGraph();
                 Load_Button.Content = "Resetuj";
-                LoadGraphAcync();
+                WaitGraphForGraphToLoadAcync();
                 
             }
             else
@@ -207,39 +211,35 @@ namespace ProjektGrafy.Pages
         }
 
 
-        /// <summary>
-        /// Metoda asynchroniczna LoadGraphAsync wczytująca graf, aktaulizująca UI i rysująca połączenia
-        /// </summary>
-        private async void LoadGraphAcync()
-        {
-            LoadGraph();
-            await Task.Run(() => waitForLoad());
-            drawConnections();
-        }
+        
 
         /// <summary>
         /// Metoda waitForLoad oczekująca wczytania grafu i zaktualizowania UI
         /// </summary>
         private void waitForLoad()
         {
-            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
-            sw = System.Diagnostics.Stopwatch.StartNew();
-            while (true) 
-            {
-                if (sw.ElapsedMilliseconds > 1000)
-                {
-                    sw.Stop();
-                    return;
-                }
+            
+            System.Threading.Thread.Sleep(100);
+            
 
                 if (isGraphLoaded == true)
                 {
-                    sw.Stop();
+                   
                     return;
                 }
-            }
+            
         }
 
-        
+        /// <summary>
+        /// Metoda asynchroniczna LoadGraphAsync czekająca na wczytanie grafu i rysująca połączenia
+        /// </summary>
+        private async void WaitGraphForGraphToLoadAcync()
+        {
+            
+            await Task.Run(() => waitForLoad());
+            drawConnections();
+        }
+
+
     }
 }

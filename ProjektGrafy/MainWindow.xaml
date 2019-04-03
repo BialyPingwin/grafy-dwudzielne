@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektGrafy"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" MinWidth="800" MinHeight="450">
+        Title="Grafy dwudzielne" Height="450" Width="800" MinWidth="800" MinHeight="450">
     <Grid Background="#FF8F8B30">
         <Frame x:Name="Main" ScrollViewer.VerticalScrollBarVisibility="Disabled" NavigationUIVisibility="Hidden"/>
     </Grid>
