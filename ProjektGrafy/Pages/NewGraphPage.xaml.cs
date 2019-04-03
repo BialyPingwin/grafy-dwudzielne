@@ -128,12 +128,12 @@ namespace ProjektGrafy.Pages
                 if (graph.LeftOrRight(currentlySelectedVertex) == "Left")
                 {
                     searchingInLeft = false;
-                    RightGrid.Background = Brushes.Green;
+                    RightGrid.Background = Brushes.Gray;
                 }
                 else if (graph.LeftOrRight(currentlySelectedVertex) == "Right")
                 {
                     searchingInLeft = true;
-                    LeftGrid.Background = Brushes.Green;
+                    LeftGrid.Background = Brushes.Gray;
                 }
                 AddConnection_Button.Content = "Anuluj";
             }
@@ -256,6 +256,9 @@ namespace ProjektGrafy.Pages
             NavigationService.Navigate(new MenuPage());
         }
 
-      
+        private void ConnectionsTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

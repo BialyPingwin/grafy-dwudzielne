@@ -171,6 +171,7 @@ namespace ProjektGrafy.Pages
         /// <param name="e"></param>
         private void Load_Button_Click(object sender, RoutedEventArgs e)
         {
+            ResultBox.Text = "";
             if (graph == null)
             {
                 
@@ -195,16 +196,16 @@ namespace ProjektGrafy.Pages
         {
             if (graph == null)
             {
-                textBox.Text = "Błąd";
+                ResultBox.Text = "Nie wczytano grafu";
                 return;
             }
             if (Checkout.IsComplete(graph))
             {
-                textBox.Text = "Jest zupełny";
+                ResultBox.Text = "Graf jest zupełny";
             }
             else
             {
-                textBox.Text = "Nie jest zupełny";
+                ResultBox.Text = "Graf NIE jest zupełny";
             }
             
         }
