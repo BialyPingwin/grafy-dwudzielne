@@ -198,8 +198,7 @@ namespace ProjektGrafy.Pages
                 textBox.Text = "Błąd";
                 return;
             }
-            Checkout checkout = new Checkout();
-            if (checkout.IsComplete(graph))
+            if (Checkout.IsComplete(graph))
             {
                 textBox.Text = "Jest zupełny";
             }

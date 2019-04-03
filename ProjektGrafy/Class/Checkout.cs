@@ -8,7 +8,7 @@ namespace ProjektGrafy.Class
 {
     class Checkout
     {
-        public bool IsComplete(BipartiteGraph bipartiteGraph)
+        public static bool IsComplete(BipartiteGraph bipartiteGraph)
         {
             for (int i = 0;  i < bipartiteGraph.Left.AllVertecs.Count; i++)
             {
