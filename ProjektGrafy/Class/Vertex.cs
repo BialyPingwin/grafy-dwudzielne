@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjektGrafy.Class
 {
+    [Serializable]
     public class Vertex
     {
         public int idNumber { get; set; }

@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace ProjektGrafy.Class
 {
+    [Serializable]
     class BipartiteGraph
     {
-        Graph Left;
-        Graph Right;
+        public Graph Left;
+        public Graph Right;
         protected int nextID = 0;
 
 

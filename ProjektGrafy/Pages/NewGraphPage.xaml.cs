@@ -32,6 +32,7 @@ namespace ProjektGrafy.Pages
             InitializeComponent();
             graph = new BipartiteGraph();
             ConnectionsTable.AutoGenerateColumns = false;
+            SizeChanged += DrawOnSizeChange;
         }
 
         private void Button_AddLeft_Click(object sender, RoutedEventArgs e)
@@ -43,6 +44,7 @@ namespace ProjektGrafy.Pages
             LeftGrid.RowDefinitions.Add(new RowDefinition());
             LeftGrid.Children.Add(ver);
             Grid.SetRow(ver, LeftGrid.RowDefinitions.Count - 1);
+            drawConnections();
             
 
         }
@@ -55,6 +57,7 @@ namespace ProjektGrafy.Pages
             RightGrid.RowDefinitions.Add(new RowDefinition());
             RightGrid.Children.Add(ver);
             Grid.SetRow(ver, RightGrid.RowDefinitions.Count - 1);
+            drawConnections();
 
         }
 
@@ -127,23 +130,24 @@ namespace ProjektGrafy.Pages
 
             //LineGrid.Children.Clear();
 
-            //foreach (object ln in MainGrid.Children)
-            //{
-            //    if (ln is Line)
-            //    {
-            //        Line tmp = ln as Line;
-            //        MainGrid.Children.Remove(tmp);
-            //        tmp.Opacity = 0; ///memoryleak intensifies!!!!!!!!!!!
-            //    }
-            //}
+            foreach (Line ln in LineCanvas.Children)
+            {
+                ln.Opacity = 0;///memory usage intensifies!!!!111one
+                ln.IsEnabled = false;
+            }
 
             foreach (VertexControl vc in LeftGrid.Children)
             {
                 
                 Vertex temp = vc.ReturnVertex();
                 Point startPoint = vc.PointToScreen(new Point(0d, 0d));
-                // startPoint.Y += 100; /*(1/(LeftGrid.RowDefinitions.Count +1))*(double)vc.Height;*/
-                // startPoint.X += 50;
+                Point controlPosition = this.PointToScreen(new Point(0d, 0d));
+                double halfOfRowHeight = 0.5 * LeftGrid.ActualHeight / LeftGrid.RowDefinitions.Count;
+                double halfOfRowWidth = 0.5 * LeftGrid.ActualWidth;
+                startPoint.Y -= controlPosition.Y; /*(1/(LeftGrid.RowDefinitions.Count +1))*(double)vc.Height;*/
+                startPoint.Y += halfOfRowHeight;
+                startPoint.X -= controlPosition.X;
+                startPoint.X += halfOfRowWidth;
                 if (temp.connectedWith != null)
                 {
                     foreach(Vertex v in temp.connectedWith)
@@ -155,20 +159,37 @@ namespace ProjektGrafy.Pages
                             {
                                 Point endPoint = vc2.PointToScreen(new Point(0d, 0d));
                                 Line newLine = new Line();
+                                double halfOfRowHeight2 = 0.5 * RightGrid.ActualHeight / RightGrid.RowDefinitions.Count;
+                                double halfOfRowWidth2 = 0.5 * RightGrid.ActualWidth;
+                                endPoint.Y -= controlPosition.Y; /*(1/(LeftGrid.RowDefinitions.Count +1))*(double)vc.Height;*/
+                                endPoint.Y += halfOfRowHeight2;
+                                endPoint.X -= controlPosition.X;
+                                endPoint.X += halfOfRowWidth2;
                                 newLine.X1 = startPoint.X;
                                 newLine.Y1 = startPoint.Y;
                                 newLine.X2 = endPoint.X;
                                 newLine.Y2 = endPoint.Y;
                                 newLine.StrokeThickness = 3;
                                 SolidColorBrush redBrush = new SolidColorBrush();
-                                redBrush.Color = Colors.Red;
+                                redBrush.Color = Colors.Black;
                                 newLine.Stroke = redBrush;
-                                MainGrid.Children.Add(newLine);
+                                LineCanvas.Children.Add(newLine);
+                                
                             }
                         }
                     }
                 }
             }
+        }
+
+        private void DrawOnSizeChange(object sender, RoutedEventArgs e)
+        {
+            drawConnections();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            BipartiteGraphIO.SaveBipartitegraph(graph);
         }
 
         //void draw()

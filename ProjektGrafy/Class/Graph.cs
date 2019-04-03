@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace ProjektGrafy.Class
 {
+    [Serializable]
     class Graph
     {
-        List<Vertex> AllVertecs;
+        public List<Vertex> AllVertecs;
 
         public Graph()
         {
@@ -34,5 +35,7 @@ namespace ProjektGrafy.Class
         {
             return AllVertecs.Contains(vertex);
         }
+
+        
     }
 }

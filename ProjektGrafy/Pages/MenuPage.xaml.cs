@@ -12,21 +12,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ProjektGrafy.Pages;
 
-namespace ProjektGrafy
+namespace ProjektGrafy.Pages
 {
     /// <summary>
-    /// Logika interakcji dla klasy MainWindow.xaml
+    /// Logika interakcji dla klasy MenuPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MenuPage : Page
     {
-        public MainWindow()
+        public MenuPage()
         {
             InitializeComponent();
-            NavigationCommands.BrowseBack.InputGestures.Clear();
-            NavigationCommands.BrowseForward.InputGestures.Clear();
-            Main.Content = new MenuPage();
+        }
+
+        private void New_Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new NewGraphPage());
+        }
+
+        private void LoadAndCheckButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new LoadGraphPage());
         }
     }
 }

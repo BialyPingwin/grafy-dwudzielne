@@ -1,0 +1,26 @@
+﻿<Page x:Class="ProjektGrafy.Pages.MenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjektGrafy.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MenuPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="19*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="13*"/>
+            <ColumnDefinition Width="27*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="New_Button" Content="Nowy graf" Margin="43,40,41,10" FontSize="20" Click="New_Button_Click"/>
+        <Button x:Name="LoadAndCheckButton" Margin="43,10,41,196" FontSize="20" Click="LoadAndCheckButton_Click" Grid.Row="1">
+            <TextBlock Text="Wczytaj graf i sprawdź czy jest zupełny" TextWrapping="Wrap" TextAlignment="Center"/>
+        </Button>
+
+    </Grid>
+</Page>
