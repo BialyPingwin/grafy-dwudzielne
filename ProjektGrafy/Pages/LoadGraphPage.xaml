@@ -23,6 +23,7 @@
             <TextBlock Text="Sprawdź czy graf jest zupełny" TextWrapping="Wrap" TextAlignment="Center"/>
         </Button>
         <Button x:Name="Back_Button" Content="Cofnij" Margin="10,0,205,10" FontSize="20" Height="35" VerticalAlignment="Bottom" Click="Back_Button_Click"/>
+        <TextBox x:Name="textBox" Grid.Column="2" HorizontalAlignment="Left" Height="35" Margin="50,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139" FontSize="20"/>
 
 
     </Grid>

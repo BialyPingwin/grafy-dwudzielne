@@ -193,7 +193,21 @@ namespace ProjektGrafy.Pages
         /// <param name="e"></param>
         private void CheckGraph_Button_Click(object sender, RoutedEventArgs e)
         {
-            ////Tutaj Algorytm
+            if (graph == null)
+            {
+                textBox.Text = "Błąd";
+                return;
+            }
+            Checkout checkout = new Checkout();
+            if (checkout.IsComplete(graph))
+            {
+                textBox.Text = "Jest zupełny";
+            }
+            else
+            {
+                textBox.Text = "Nie jest zupełny";
+            }
+            
         }
 
         /// <summary>
