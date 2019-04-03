@@ -83,7 +83,7 @@ namespace ProjektGrafy.Pages
                     Vertex backup = currentlySelectedVertex;
                     SetSelectedVertex(vertex);
                     SetSelectedVertex(backup);//nosz.. tylko tak działa xD
-                    //drawConnections();
+                    drawConnections();
                 }
             }
             
@@ -91,7 +91,7 @@ namespace ProjektGrafy.Pages
 
         private void AddConnection_Button_Click(object sender, RoutedEventArgs e)
         {
-            draw();
+            
             if (currentlySelectedVertex != null && !waitingToConnect)
             {
                 waitingToConnect = true;
@@ -125,13 +125,25 @@ namespace ProjektGrafy.Pages
         void drawConnections()
         {
 
-            LineGrid.Children.Clear();
+            //LineGrid.Children.Clear();
 
-            foreach(VertexControl vc in LeftGrid.Children)
+            //foreach (object ln in MainGrid.Children)
+            //{
+            //    if (ln is Line)
+            //    {
+            //        Line tmp = ln as Line;
+            //        MainGrid.Children.Remove(tmp);
+            //        tmp.Opacity = 0; ///memoryleak intensifies!!!!!!!!!!!
+            //    }
+            //}
+
+            foreach (VertexControl vc in LeftGrid.Children)
             {
                 
                 Vertex temp = vc.ReturnVertex();
                 Point startPoint = vc.PointToScreen(new Point(0d, 0d));
+                // startPoint.Y += 100; /*(1/(LeftGrid.RowDefinitions.Count +1))*(double)vc.Height;*/
+                // startPoint.X += 50;
                 if (temp.connectedWith != null)
                 {
                     foreach(Vertex v in temp.connectedWith)
@@ -151,7 +163,7 @@ namespace ProjektGrafy.Pages
                                 SolidColorBrush redBrush = new SolidColorBrush();
                                 redBrush.Color = Colors.Red;
                                 newLine.Stroke = redBrush;
-                                LineGrid.Children.Add(newLine);
+                                MainGrid.Children.Add(newLine);
                             }
                         }
                     }
@@ -159,18 +171,18 @@ namespace ProjektGrafy.Pages
             }
         }
 
-        void draw()
-        {
-            Line newLine = new Line();
-            newLine.X1 = 305;
-            newLine.Y1 = 374;
-            newLine.X2 = 564;
-            newLine.Y2 = 368;
-            newLine.StrokeThickness = 3;
-            SolidColorBrush redBrush = new SolidColorBrush();
-            redBrush.Color = Colors.Red;
-            newLine.Stroke = redBrush;
-            MainGrid.Children.Add(newLine);
-        }
+        //void draw()
+        //{
+        //    Line newLine = new Line();
+        //    newLine.X1 = 305;
+        //    newLine.Y1 = 374;
+        //    newLine.X2 = 564;
+        //    newLine.Y2 = 368;
+        //    newLine.StrokeThickness = 3;
+        //    SolidColorBrush redBrush = new SolidColorBrush();
+        //    redBrush.Color = Colors.Red;
+        //    newLine.Stroke = redBrush;
+        //    MainGrid.Children.Add(newLine);
+        //}
     }
 }
