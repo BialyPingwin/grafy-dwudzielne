@@ -22,6 +22,7 @@
         <Button x:Name="CheckGraph_Button" VerticalAlignment="Top" Margin="50,101,50,0" Height="104" FontSize="20" Grid.Column="2" Click="CheckGraph_Button_Click">
             <TextBlock Text="Sprawdź czy graf jest zupełny" TextWrapping="Wrap" TextAlignment="Center"/>
         </Button>
+        <Button x:Name="Back_Button" Content="Cofnij" Margin="10,0,205,10" FontSize="20" Height="35" VerticalAlignment="Bottom" Click="Back_Button_Click"/>
 
 
     </Grid>

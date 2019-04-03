@@ -6,16 +6,26 @@ using System.Threading.Tasks;
 
 namespace ProjektGrafy.Class
 {
+    /// <summary>
+    /// Logika klasy Graph przechowującą liste wierzchołków w danym grafie
+    /// </summary>
     [Serializable]
     class Graph
     {
         public List<Vertex> AllVertecs;
 
+        /// <summary>
+        /// Konstruktor klasy Graph, tworzący listę wierzchołków z wartością null
+        /// </summary>
         public Graph()
         {
             AllVertecs = new List<Vertex>();
         }
 
+        /// <summary>
+        /// Metoda AddVertecs dodająca wierzchołek do grafu po zadanym numerze id
+        /// </summary>
+        /// <param name="id">numer id</param>
         public void AddVertecs(int id)
         {
             Vertex vertex = new Vertex(id);
@@ -26,11 +36,20 @@ namespace ProjektGrafy.Class
             }
         }
 
+        /// <summary>
+        /// Metoda ReturnLast zwracająca ostatni dodany do grafu wierzchołek 
+        /// </summary>
+        /// <returns></returns>
         public Vertex ReturnLast()
         {
             return AllVertecs.Last<Vertex>();
         }
 
+        /// <summary>
+        /// Metoda ContainsOf sprawdzająca czy dany wierzchołek zawiera się w tym grafie
+        /// </summary>
+        /// <param name="vertex">przyjmyje jako parametr Wierzchołek <see cref="Vertex"/></param>
+        /// <returns>zwraca wartość true albo false</returns>
         public bool ContainsOf(Vertex vertex)
         {
             return AllVertecs.Contains(vertex);

@@ -10,9 +10,16 @@ using Microsoft.Win32;
 
 namespace ProjektGrafy.Class
 {
+    /// <summary>
+    /// Klasa BipartiteGraphIO służąca do zapisywania i wczytywania grafu 
+    /// </summary>
     class BipartiteGraphIO
     {
-        //serializacja binarna
+        /// <summary>
+        /// Metoda Serialize zapisująca do konkretnego pliku graf
+        /// </summary>
+        /// <param name="path">ścieżka pliku</param>
+        /// <param name="obj">obiekt BipartiteGraph<see cref="BipartiteGraph"/></param>
         private static void Serialize(string path, BipartiteGraph obj)
         {
             if (obj != null)
@@ -26,7 +33,12 @@ namespace ProjektGrafy.Class
             }
 
         }
-        //desreializacja binarna
+        
+        /// <summary>
+        /// Metoda Deserialize wczytująca z konkretnegej ścieżki plik i zwracająca go jako BipartiteGraph <see cref="BipartiteGraph"/>
+        /// </summary>
+        /// <param name="path">ścieżka do pliku</param>
+        /// <returns>Zwraca klasę BipartiteGraph wczytaną z pliku <see cref="BipartiteGraph"/></returns>
         private static BipartiteGraph Deserialize(string path)
         {
             BipartiteGraph temp = default(BipartiteGraph);
@@ -54,15 +66,19 @@ namespace ProjektGrafy.Class
 
         }
 
-
+        /// <summary>
+        /// Statyczna publiczna metoda SaveBipartitegraph do 
+        /// wywoływania z innych miejsc programu do zapisywania
+        /// konkretnego grafu, pozwala wybrac użytkownikowi gdzie
+        /// i pod jaką nazwą plik bedzie zapisany
+        /// </summary>
+        /// <param name="obj">obiekt klasy BipartiteGraph <see cref="BipartiteGraph"/></param>
         public static void SaveBipartitegraph(BipartiteGraph obj)
         {
             
             SaveFileDialog saveFileDialog = new SaveFileDialog();
 
             saveFileDialog.Filter = "grpah files (*.graph)|*.graph";
-            //saveFileDialog.FilterIndex = 1;
-            //saveFileDialog.RestoreDirectory = true;
 
             if (saveFileDialog.ShowDialog() == true)
             {
@@ -71,6 +87,12 @@ namespace ProjektGrafy.Class
 
         }
 
+        /// <summary>
+        /// publiczna stayczna metoda LoadBipartiteGraph służąca
+        /// do wczytywania grafu z innych miejsc w programie
+        /// pozwala wybrać użytkownikowi plik do wczytania
+        /// </summary>
+        /// <returns>Zwraca wczytaną z plkiu </returns>
         public static BipartiteGraph LoadBipartiteGraph()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();

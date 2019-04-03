@@ -22,26 +22,39 @@ namespace ProjektGrafy.Pages
     /// </summary>
     public partial class LoadGraphPage : Page
     {
-
-        BipartiteGraph graph;
         
+        BipartiteGraph graph;
+        bool isGraphLoaded = false;
+        delegate void GraphLoaded(object obj, RoutedEventArgs eventArgs);
+        event GraphLoaded OnGraphLoaded;
+
+        /// <summary>
+        /// Konstruktor klasy LoadGraphPage
+        /// </summary>
         public LoadGraphPage()
         {
             InitializeComponent();
             SizeChanged += DrawOnSizeChange;
+            OnGraphLoaded += OnLoad;
         }
 
         
-
+        /// <summary>
+        /// Metoda LoadGraph wczytująca graf z pliku użytkownika <see cref="BipartiteGraphIO"/>
+        /// </summary>
         private void LoadGraph()
         {
             graph = BipartiteGraphIO.LoadBipartiteGraph();
             if (graph != null)
             {
                 UpdateVertex();
+                
             }
         }
 
+        /// <summary>
+        /// Metoda UpdateVertex rusująca wierzchołki wczytanego grafu
+        /// </summary>
         private void UpdateVertex()
         {
             foreach (Vertex v in graph.Left.AllVertecs)
@@ -57,16 +70,21 @@ namespace ProjektGrafy.Pages
                 RightGrid.RowDefinitions.Add(new RowDefinition());
                 RightGrid.Children.Add(ver);
                 Grid.SetRow(ver, RightGrid.RowDefinitions.Count - 1);
+                
             }
 
-
-            drawConnections();
+        
+            OnGraphLoaded(this, null);
+            
         }
 
+        /// <summary>
+        /// Metoda drawConnections rysująca połączenia między wierzchołkami 
+        /// </summary>
         void drawConnections()
         {
 
-            //LineGrid.Children.Clear();
+            
 
             foreach (Line ln in LineCanvas.Children)
             {
@@ -122,21 +140,106 @@ namespace ProjektGrafy.Pages
             }
         }
 
+
+        /// <summary>
+        /// Metoda DrawOnSize wykorzystywana ze zdarzeniem zmiany wielkości okna
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <see cref="drawConnections"/>
         private void DrawOnSizeChange(object sender, RoutedEventArgs e)
         {
             drawConnections();
         }
 
-        private void Load_Button_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Metoda OnLoad wykorzystywana do informowania o wczytaniu grafu do UI
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnLoad(object sender, RoutedEventArgs e)
         {
-            LoadGraph();
+
+            isGraphLoaded = true;
+            
         }
 
+        /// <summary>
+        /// Metoda Load_Button_Click wywoływana po kliknięciu przycisku "Wczytaj graf"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Load_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (graph == null)
+            {
+                
+                Load_Button.Content = "Resetuj";
+                LoadGraphAcync();
+                
+            }
+            else
+            {
+                NavigationService.Navigate(new LoadGraphPage());
+                
+            }
+            
+        }
+
+        /// <summary>
+        /// Metoda CheckGraph_Button_Click wywoływana po kliknięciu przycisku "Sprawdź czy graf jest zupełny"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CheckGraph_Button_Click(object sender, RoutedEventArgs e)
         {
             ////Tutaj Algorytm
         }
 
+        /// <summary>
+        /// Metoda Back_Button_Click wywoływana po kliknięciu przycisku "Cofnij"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Back_Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MenuPage());
+        }
 
+
+        /// <summary>
+        /// Metoda asynchroniczna LoadGraphAsync wczytująca graf, aktaulizująca UI i rysująca połączenia
+        /// </summary>
+        private async void LoadGraphAcync()
+        {
+            LoadGraph();
+            await Task.Run(() => waitForLoad());
+            drawConnections();
+        }
+
+        /// <summary>
+        /// Metoda waitForLoad oczekująca wczytania grafu i zaktualizowania UI
+        /// </summary>
+        private void waitForLoad()
+        {
+            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+            sw = System.Diagnostics.Stopwatch.StartNew();
+            while (true) 
+            {
+                if (sw.ElapsedMilliseconds > 1000)
+                {
+                    sw.Stop();
+                    return;
+                }
+
+                if (isGraphLoaded == true)
+                {
+                    sw.Stop();
+                    return;
+                }
+            }
+        }
+
+        
     }
 }

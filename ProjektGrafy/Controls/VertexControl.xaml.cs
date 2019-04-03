@@ -18,12 +18,16 @@ using ProjektGrafy.Pages;
 namespace ProjektGrafy.Controls
 {
     /// <summary>
-    /// Logika interakcji dla klasy VertexControl.xaml
+    /// Logika interakcji dla klasy VertexControl.xaml kontrolki przechowującej wierzchołki
     /// </summary>
     public partial class VertexControl : UserControl
     {
         Vertex vertex;
 
+        /// <summary>
+        /// Konstruktor kontrolki VertecControl
+        /// </summary>
+        /// <param name="vertex">przyjmuje wierzchołek który ma przechowywać <see cref="Vertex"/></param>
         public VertexControl(Vertex vertex)
         {
             InitializeComponent();
@@ -31,6 +35,14 @@ namespace ProjektGrafy.Controls
             VertexButton.Content = vertex.idNumber;
         }
 
+        /// <summary>
+        /// Metoda VertexButton_Click wywoływana kliknięciem na kontrolkę 
+        /// odwołująca sie do NewGraphPage <see cref="NewGraphPage"/>
+        /// i wywołująca metodę SetSelectedVertex <see cref="NewGraphPage.SetSelectedVertex(Vertex)"/>
+        /// przekazując odniesienie do wierzchołka przechowywanego w tej kontrolce
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void VertexButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -43,6 +55,10 @@ namespace ProjektGrafy.Controls
             }
         }
 
+        /// <summary>
+        /// Metoda zwracająca odniesienie do przechowywanego wierzchołka 
+        /// </summary>
+        /// <returns>zwraca wierzchołek <see cref="Vertex"/></returns>
         public Vertex ReturnVertex()
         {
             return vertex;
