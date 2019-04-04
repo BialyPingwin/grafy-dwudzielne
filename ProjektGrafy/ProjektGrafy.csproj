@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="Class\BipartiteGraphIO.cs" />
     <Compile Include="Class\BipartiteGraph.cs" />
+    <Compile Include="Class\Checkout.cs" />
     <Compile Include="Class\Graph.cs" />
     <Compile Include="Class\Vertex.cs" />
     <Compile Include="Controls\VertexControl.xaml.cs">
@@ -125,6 +126,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gfx\Graf.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
