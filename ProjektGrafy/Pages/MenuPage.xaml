@@ -20,7 +20,7 @@
         <Button x:Name="LoadAndCheckButton" Margin="25,113,35,0" FontSize="20" Click="LoadAndCheckButton_Click" Height="146" VerticalAlignment="Top" Background="#ffc300">
             <TextBlock Text="Wczytaj graf i sprawdź czy jest zupełny" TextWrapping="Wrap" TextAlignment="Center" FontSize="30" Foreground="White"/>
         </Button>
-        <Image Grid.Column="1" HorizontalAlignment="Center" Height="430" Margin="52,10,59,10" VerticalAlignment="Center" Width="356" Source="/ProjektGrafy;component/Gfx/Graf.png" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+        <Image Grid.Column="1" HorizontalAlignment="Center" Height="346" Margin="95,48,93,56" VerticalAlignment="Center" Width="279" Source="/ProjektGrafy;component/Gfx/Graf.png" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
 
     </Grid>
 </Page>
