@@ -48,7 +48,7 @@ namespace ProjektGrafy.Pages
             graph.AddToLeft();
 
 
-            VertexControl ver = new VertexControl(graph.ReturnLastLeft());
+            VertexControl ver = new VertexControl(graph.ReturnLastLeft(), true);
             LeftGrid.RowDefinitions.Add(new RowDefinition());
             LeftGrid.Children.Add(ver);
             Grid.SetRow(ver, LeftGrid.RowDefinitions.Count - 1);
@@ -66,7 +66,7 @@ namespace ProjektGrafy.Pages
         {
             graph.AddToRight();
 
-            VertexControl ver = new VertexControl(graph.ReturnLastRight());
+            VertexControl ver = new VertexControl(graph.ReturnLastRight(), true);
             RightGrid.RowDefinitions.Add(new RowDefinition());
             RightGrid.Children.Add(ver);
             Grid.SetRow(ver, RightGrid.RowDefinitions.Count - 1);
@@ -102,14 +102,17 @@ namespace ProjektGrafy.Pages
                     LeftGrid.Background = null;
                     RightGrid.Background = null;
                     AddConnection_Button.Content = "Dodaj połączenie";
+                    AddConnection_Button.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#ffc300"));
+                    AddConnection_Button.BorderBrush = (SolidColorBrush)(new BrushConverter().ConvertFrom("#ffc300"));
                     UpdateConnectionsTable();
                     Vertex backup = currentlySelectedVertex;
                     SetSelectedVertex(vertex);
-                    SetSelectedVertex(backup);//nosz.. tylko tak działa xD
+                    SetSelectedVertex(backup);
                     drawConnections();
+                    
                 }
             }
-            
+            VertexControl.HighlightSelected(this, currentlySelectedVertex.idNumber);
         }
 
         /// <summary>
@@ -128,14 +131,16 @@ namespace ProjektGrafy.Pages
                 if (graph.LeftOrRight(currentlySelectedVertex) == "Left")
                 {
                     searchingInLeft = false;
-                    RightGrid.Background = Brushes.Gray;
+                    RightGrid.Background = Brushes.SeaGreen;
                 }
                 else if (graph.LeftOrRight(currentlySelectedVertex) == "Right")
                 {
                     searchingInLeft = true;
-                    LeftGrid.Background = Brushes.Gray;
+                    LeftGrid.Background = Brushes.SeaGreen;
                 }
                 AddConnection_Button.Content = "Anuluj";
+                AddConnection_Button.Background = Brushes.Tomato;
+                AddConnection_Button.BorderBrush = Brushes.Tomato;
             }
             else if (waitingToConnect)
             {
@@ -143,6 +148,8 @@ namespace ProjektGrafy.Pages
                 LeftGrid.Background = null;
                 RightGrid.Background = null;
                 AddConnection_Button.Content = "Dodaj połączenie";
+                AddConnection_Button.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#ffc300"));
+                AddConnection_Button.BorderBrush = (SolidColorBrush)(new BrushConverter().ConvertFrom("#ffc300"));
             }
         }
 

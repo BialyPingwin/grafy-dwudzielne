@@ -23,16 +23,22 @@ namespace ProjektGrafy.Controls
     public partial class VertexControl : UserControl
     {
         Vertex vertex;
+        bool isSelectable;
 
         /// <summary>
         /// Konstruktor kontrolki VertecControl
         /// </summary>
         /// <param name="vertex">przyjmuje wierzchołek który ma przechowywać <see cref="Vertex"/></param>
-        public VertexControl(Vertex vertex)
+        public VertexControl(Vertex vertex, bool isSelectable = false)
         {
             InitializeComponent();
             this.vertex = vertex;
+            this.isSelectable = isSelectable;
             VertexButton.Content = vertex.idNumber;
+            if (!isSelectable)
+            {
+                VertexButton.IsEnabled = false;
+            }
         }
 
         /// <summary>
@@ -52,7 +58,23 @@ namespace ProjektGrafy.Controls
                 NewGraphPage page = main.Main.Content as NewGraphPage;
                 page.SetSelectedVertex(vertex);
                 page.UpdateConnectionsTable();
+
+                
+
+                //foreach (VertexControl vc in page.LeftGrid.Children)
+                //{
+                //    vc.Deselect();
+                //}
+                //foreach (VertexControl vc in page.RightGrid.Children)
+                //{
+                //    vc.Deselect();
+                //}
+
+                //Select();
+
             }
+
+            
         }
 
         /// <summary>
@@ -63,5 +85,54 @@ namespace ProjektGrafy.Controls
         {
             return vertex;
         }
+
+        /// <summary>
+        /// Metoda Select zmienia kolor aktualnie zaznaczonej kontrolki 
+        /// </summary>
+        private void Select()
+        {
+            VertexButton.Background = Brushes.SeaGreen;
+        }
+
+        /// <summary>
+        /// Metoda Deselect zmienia kolor aktualnie zaznaczonej kontrolki 
+        /// </summary>
+        private void Deselect()
+        {
+            VertexButton.Background = Brushes.White;
+        }
+
+        /// <summary>
+        /// Metoda HighlightSelected po wywołaniu wykonuje metode Select <see cref="Select"/>
+        /// czyli zaznacza podany po idNumer wierzchołek, a dla kazdego innego wykonuje metodę Deselect <see cref="Deselect"/>
+        /// </summary>
+        /// <param name="newGraphPage">Strona w której należy zmienić kolor kontrolek</param>
+        /// <param name="idNumber">numer szukanego wierzchołka</param>
+        public static void HighlightSelected(NewGraphPage newGraphPage, int idNumber)
+        {
+            foreach (VertexControl vc in newGraphPage.LeftGrid.Children)
+            {
+                if (vc.vertex.idNumber == idNumber)
+                {
+                    vc.Select();
+                }
+                else
+                {
+                    vc.Deselect();
+                }              
+            }
+            foreach (VertexControl vc in newGraphPage.RightGrid.Children)
+            {
+                if (vc.vertex.idNumber == idNumber)
+                {
+                    vc.Select();
+                }
+                else
+                {
+                    vc.Deselect();
+                }
+            }
+        }
+
     }
 }

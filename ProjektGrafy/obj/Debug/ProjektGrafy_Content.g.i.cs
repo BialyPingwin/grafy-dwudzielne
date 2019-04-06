@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("gfx/anim.gif")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icon_fes_icon.ico")]
 
 

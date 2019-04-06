@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektGrafy"
         mc:Ignorable="d"
-        Title="Projekt 26" Height="450" Width="800" MinWidth="800" MinHeight="450">
+        Title="Projekt 26 - Graf dwudzielny" Height="450" Width="800" MinWidth="800" MinHeight="450">
     <Grid Background="#FF595858">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="680*"/>
