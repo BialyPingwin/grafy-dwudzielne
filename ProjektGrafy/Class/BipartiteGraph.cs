@@ -13,8 +13,19 @@ namespace ProjektGrafy.Class
     [Serializable]
     class BipartiteGraph
     {
+        /// <summary>
+        /// Zmienna zwierająca lewą część grafu dwudzielnego <see cref="Graph"/>
+        /// </summary>
         public Graph Left;
+
+        /// <summary>
+        /// Zmienna zwierająca prawą część grafu dwudzielnego <see cref="Graph"/>
+        /// </summary>
         public Graph Right;
+
+        /// <summary>
+        /// Zmienna przechowująca liczbę która zostanie przypisana do kolejnego stworzonego wierzchołka
+        /// </summary>
         protected int nextID = 0;
 
         /// <summary>

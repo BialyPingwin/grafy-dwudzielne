@@ -29,6 +29,7 @@ namespace ProjektGrafy.Controls
         /// Konstruktor kontrolki VertecControl
         /// </summary>
         /// <param name="vertex">przyjmuje wierzchołek który ma przechowywać <see cref="Vertex"/></param>
+        /// <param name="isSelectable">Zmienna która po przekazaniu do niej true włącza możliwość kliknięcia kontrolki </param>
         public VertexControl(Vertex vertex, bool isSelectable = false)
         {
             InitializeComponent();

@@ -12,6 +12,9 @@ namespace ProjektGrafy.Class
     [Serializable]
     class Graph
     {
+        /// <summary>
+        /// Lista zawierająca wszystkie wierzchołki zawarte w tym grafie <see cref="Vertex"/>
+        /// </summary>
         public List<Vertex> AllVertecs;
 
         /// <summary>

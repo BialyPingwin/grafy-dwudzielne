@@ -12,7 +12,14 @@ namespace ProjektGrafy.Class
     [Serializable]
     public class Vertex
     {
+        /// <summary>
+        /// Zmienna przechowująca numer tego wierzchołka 
+        /// </summary>
         public int idNumber { get; set; }
+
+        /// <summary>
+        /// Lista przechowująca wierzchołki z którymi ten wierzchołek jest połączony 
+        /// </summary>
         public List<Vertex> connectedWith;
         
         /// <summary>
