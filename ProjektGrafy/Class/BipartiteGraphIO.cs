@@ -78,7 +78,7 @@ namespace ProjektGrafy.Class
             
             SaveFileDialog saveFileDialog = new SaveFileDialog();
 
-            saveFileDialog.Filter = "grpah files (*.graph)|*.graph";
+            saveFileDialog.Filter = "graph files (*.graph)|*.graph";
 
             if (saveFileDialog.ShowDialog() == true)
             {
@@ -96,7 +96,7 @@ namespace ProjektGrafy.Class
         public static BipartiteGraph LoadBipartiteGraph()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "grpah files (*.graph)|*.graph";
+            openFileDialog.Filter = "graph files (*.graph)|*.graph";
 
             if (openFileDialog.ShowDialog() == true)
             {
