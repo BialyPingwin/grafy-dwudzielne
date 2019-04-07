@@ -14,13 +14,13 @@
             <ColumnDefinition Width="333*"/>
             <ColumnDefinition Width="467*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="New_Button" Margin="25,28,35,0" FontSize="24" Click="New_Button_Click" Height="80" VerticalAlignment="Top" Background="#ffc300">
+        <Button x:Name="New_Button" Margin="25,28,35,0" FontSize="24" Click="New_Button_Click" Height="80" VerticalAlignment="Top" Background="#ffc300" Style="{DynamicResource ButtonStyleGraphApp}" BorderThickness="3" BorderBrush="#FFFFC300">
             <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Utwórz nowy graf" TextAlignment="Center" FontSize="30" Foreground="White"/>
         </Button>
-        <Button x:Name="LoadAndCheckButton" Margin="25,113,35,0" FontSize="20" Click="LoadAndCheckButton_Click" Height="146" VerticalAlignment="Top" Background="#ffc300">
+        <Button x:Name="LoadAndCheckButton" Margin="25,113,35,0" FontSize="20" Click="LoadAndCheckButton_Click" Height="146" VerticalAlignment="Top" Background="#ffc300" Style="{DynamicResource ButtonStyleGraphApp}" BorderThickness="3" BorderBrush="#FFFFC300">
             <TextBlock Text="Wczytaj graf i sprawdź czy jest zupełny" TextWrapping="Wrap" TextAlignment="Center" FontSize="30" Foreground="White"/>
         </Button>
-        <Image Grid.Column="1" HorizontalAlignment="Center" Height="346" Margin="95,48,93,56" VerticalAlignment="Center" Width="279" Source="/ProjektGrafy;component/Gfx/Graf.png" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+        <TextBlock x:Name="AppInfo" Grid.Column="1" Margin="50,28,50,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="347" Foreground="White" FontSize="24"/>
 
     </Grid>
 </Page>

@@ -29,7 +29,7 @@ namespace ProjektGrafy.Pages
         public MenuPage()
         {
             InitializeComponent();
-                   
+            AppInfo.Text = "Projekt 26 - Sprawdzenie czy graf dwudzielny jest zupełny. \n\nAutorzy:\nMichał Bogusławski\nZuzanna Żbikowska";
         }
 
         /// <summary>

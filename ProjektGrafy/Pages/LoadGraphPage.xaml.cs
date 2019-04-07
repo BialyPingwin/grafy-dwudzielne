@@ -193,6 +193,7 @@ namespace ProjektGrafy.Pages
 
         /// <summary>
         /// Metoda CheckGraph_Button_Click wywoływana po kliknięciu przycisku "Sprawdź czy graf jest zupełny"
+        /// Wykonuje algorytm sprawdzający zupełnosc wczytanego grafu
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -206,10 +207,12 @@ namespace ProjektGrafy.Pages
             if (Checkout.IsComplete(graph))
             {
                 ResultBox.Text = "Graf jest zupełny";
+                ResultBox.Background = Brushes.SeaGreen;
             }
             else
             {
                 ResultBox.Text = "Graf NIE jest zupełny";
+                ResultBox.Background = Brushes.Tomato;
             }
             
         }
