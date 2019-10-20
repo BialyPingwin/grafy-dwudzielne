@@ -15,5 +15,5 @@ Aplikacja pobiera plik zawierający dane grafu dwudzielnego (rozszerzenie *.grap
 ![Algorytm](https://github.com/BialyPingwin/grafy-dwudzielne/blob/master/extras/algorytm.png?raw=true)
 
 # Współpraca
-[BialyPingwin](https://github.com/BialyPingwin)
+[BialyPingwin](https://github.com/BialyPingwin)  
 [zuzzbi](https://github.com/zuzzbi)
