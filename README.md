@@ -1,5 +1,5 @@
 # Grafy dwudzielne zupełne
-Aplikacja sprawdzająca zupelność grafu dwudzielnego.
+Aplikacja sprawdzająca zupełność grafu dwudzielnego.
 
 **Platforma docelowa:** Windows  
 **Wykorzystane technologie:** WPF
